@@ -1,0 +1,76 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
+  "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/RAID.Slot.7-1",
+  "@odata.type": "#Storage.v1_4_0.Storage",
+  "Description": "PERC H710 Adapter",
+  "Drives": [
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.0:Enclosure.Internal.0-1:RAID.Slot.7-1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.1:Enclosure.Internal.0-1:RAID.Slot.7-1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.2:Enclosure.Internal.0-1:RAID.Slot.7-1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.3:Enclosure.Internal.0-1:RAID.Slot.7-1"
+    }
+  ],
+  "Drives@odata.count": 4,
+  "Id": "RAID.Slot.7-1",
+  "Links": {
+    "Enclosures": [
+      {
+        "@odata.id": "/redfish/v1/Chassis/Enclosure.Internal.0-1:RAID.Slot.7-1"
+      },
+      {
+        "@odata.id": "/redfish/v1/Chassis/System.Embedded.1"
+      }
+    ],
+    "Enclosures@odata.count": 2
+  },
+  "Name": "PERC H710 Adapter",
+  "Status": {
+    "Health": "OK",
+    "HealthRollup": "Warning",
+    "State": "Enabled"
+  },
+  "StorageControllers": [
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/StorageControllers/RAID.Slot.7-1",
+      "Assembly": {
+        "@odata.id": "/redfish/v1/Chassis/System.Embedded.1/Assembly"
+      },
+      "FirmwareVersion": "21.2.0-0007",
+      "Identifiers": [
+        {
+          "DurableName": "5B8CA3A0F126FC00",
+          "DurableNameFormat": "NAA"
+        }
+      ],
+      "Links": {},
+      "Manufacturer": "DELL",
+      "MemberId": "RAID.Slot.7-1",
+      "Model": "PERC H710 Adapter",
+      "Name": "PERC H710 Adapter",
+      "SpeedGbps": 6,
+      "Status": {
+        "Health": "OK",
+        "HealthRollup": "Warning",
+        "State": "Enabled"
+      },
+      "SupportedControllerProtocols": [
+        "PCIe"
+      ],
+      "SupportedDeviceProtocols": [
+        "SAS",
+        "SATA"
+      ]
+    }
+  ],
+  "StorageControllers@odata.count": 1,
+  "Volumes": {
+    "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/RAID.Slot.7-1/Volumes"
+  }
+}

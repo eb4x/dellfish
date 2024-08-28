@@ -1,0 +1,57 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#Drive.Drive",
+  "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.1:Enclosure.Internal.0-1:RAID.Slot.7-1",
+  "@odata.type": "#Drive.v1_3_0.Drive",
+  "Actions": {
+    "#Drive.SecureErase": {
+      "target": "/redfish/v1/Systems/System.Embedded.1/Storage/Drives/Disk.Bay.1:Enclosure.Internal.0-1:RAID.Slot.7-1/Actions/Drive.SecureErase"
+    }
+  },
+  "Assembly": {
+    "@odata.id": "/redfish/v1/Chassis/System.Embedded.1/Assembly"
+  },
+  "BlockSizeBytes": 512,
+  "CapableSpeedGbs": 6,
+  "CapacityBytes": 146163105792,
+  "Description": "Physical Disk 0:1:1",
+  "EncryptionAbility": "None",
+  "EncryptionStatus": "Unencrypted",
+  "FailurePredicted": false,
+  "HotspareType": "None",
+  "Id": "Disk.Bay.1:Enclosure.Internal.0-1:RAID.Slot.7-1",
+  "Identifiers": [
+    {
+      "DurableName": "50000394D80B1AEA",
+      "DurableNameFormat": "NAA"
+    }
+  ],
+  "Links": {
+    "Chassis": {
+      "@odata.id": "/redfish/v1/Chassis/Enclosure.Internal.0-1:RAID.Slot.7-1"
+    },
+    "Volumes": [
+      {
+        "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Volumes/Disk.Virtual.0:RAID.Slot.7-1"
+      }
+    ],
+    "Volumes@odata.count": 1
+  },
+  "Location": [],
+  "Manufacturer": "TOSHIBA",
+  "MediaType": "HDD",
+  "Model": "MK1401GRRB",
+  "Name": "Physical Disk 0:1:1",
+  "NegotiatedSpeedGbs": 6,
+  "Operations": [],
+  "PartNumber": "PH06DFD87557136CMIDKA02",
+  "PredictedMediaLifeLeftPercent": null,
+  "Protocol": "SAS",
+  "Revision": "DB08",
+  "RotationSpeedRPM": 15000,
+  "SerialNumber": "63A0A04CFQ87",
+  "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#VolumeCollection.VolumeCollection",
+  "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/RAID.Slot.7-1/Volumes",
+  "@odata.type": "#VolumeCollection.VolumeCollection",
+  "Description": "Collection Of Volume",
+  "Members": [
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Volumes/Disk.Virtual.0:RAID.Slot.7-1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Volumes/Disk.Virtual.1:RAID.Slot.7-1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Storage/Volumes/Disk.Virtual.2:RAID.Slot.7-1"
+    }
+  ],
+  "Members@odata.count": 3,
+  "Name": "Volume Collection"
+}
