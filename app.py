@@ -1,9 +1,28 @@
-from flask import Flask, jsonify, send_file
+from flask import Flask, jsonify, make_response, request, send_file
+from functools import wraps
+from typing import Any, Callable
 import os.path
 
 app = Flask(__name__)
 
 model_name = "r820"
+
+
+def authorization(func: Callable[..., Any]) -> Callable[..., Any]:
+    @wraps(func)
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+
+        authorization = request.headers.get("Authorization")
+
+        if not authorization:
+            return make_response(jsonify({"message": "Unauthorized"}), 401)
+
+        if authorization != "Basic cm9vdDpjYWx2aW4=":
+            return make_response(jsonify({"message": "Still unauthorized"}), 401)
+
+        return func(*args, **kwargs)
+
+    return wrapper
 
 
 @app.route("/redfish/v1")
@@ -17,6 +36,7 @@ def ServiceRoot():
 
 
 @app.route("/redfish/v1/Chassis")
+@authorization
 def ChassisCollection():
     if not os.path.exists(f"static/{model_name}/ChassisCollection.json"):
         return jsonify({"Error": "File not found"}), 404
@@ -25,6 +45,7 @@ def ChassisCollection():
 
 
 @app.route("/redfish/v1/Systems")
+@authorization
 def ComputerSystemCollection():
     if not os.path.exists(f"static/{model_name}/ComputerSystemCollection.json"):
         return jsonify({"Error": "File not found"}), 404
@@ -33,6 +54,7 @@ def ComputerSystemCollection():
 
 
 @app.route("/redfish/v1/Systems/<string:system>")
+@authorization
 def ComputerSystem(system):
     if not os.path.exists(f"static/{model_name}/Systems/{system}.json"):
         return jsonify({"Error": "File not found"}), 404
@@ -41,6 +63,7 @@ def ComputerSystem(system):
 
 
 @app.route("/redfish/v1/Systems/<string:system>/Storage")
+@authorization
 def StorageCollection(system):
     print(f"static/{model_name}/Systems/{system}/StorageCollection.json")
     if not os.path.exists(
@@ -52,6 +75,7 @@ def StorageCollection(system):
 
 
 @app.route("/redfish/v1/Systems/<string:system>/Storage/<string:storage>")
+@authorization
 def Storage(system, storage):
     if not os.path.exists(
         f"static/{model_name}/Systems/{system}/Storage/{storage}.json"
@@ -62,6 +86,7 @@ def Storage(system, storage):
 
 
 @app.route("/redfish/v1/Systems/<string:system>/Storage/Drives/<string:drive>")
+@authorization
 def StorageDrive(system, drive):
     if not os.path.exists(
         f"static/{model_name}/Systems/{system}/Storage/Drives/{drive}.json"
@@ -74,6 +99,7 @@ def StorageDrive(system, drive):
 
 
 @app.route("/redfish/v1/Systems/<string:system>/Storage/Volumes/<string:volume>")
+@authorization
 def StorageVolume(system, volume):
     if not os.path.exists(
         f"static/{model_name}/Systems/{system}/Storage/Volumes/{volume}.json"
