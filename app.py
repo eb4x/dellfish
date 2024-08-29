@@ -44,6 +44,24 @@ def ChassisCollection():
     return send_file(f"static/{model_name}/ChassisCollection.json")
 
 
+@app.route("/redfish/v1/Managers")
+@authorization
+def ManagerCollection():
+    if not os.path.exists(f"static/{model_name}/ManagerCollection.json"):
+        return jsonify({"Error": "File not found"}), 404
+
+    return send_file(f"static/{model_name}/ManagerCollection.json")
+
+
+@app.route("/redfish/v1/Managers/<string:manager>")
+@authorization
+def Manager(manager):
+    if not os.path.exists(f"static/{model_name}/Managers/{manager}.json"):
+        return jsonify({"Error": "File not found"}), 404
+
+    return send_file(f"static/{model_name}/Managers/{manager}.json")
+
+
 @app.route("/redfish/v1/Systems")
 @authorization
 def ComputerSystemCollection():
