@@ -116,6 +116,19 @@ def StorageDrive(system, drive):
     )
 
 
+@app.route("/redfish/v1/Systems/<string:system>/Storage/<string:controller>/Volumes")
+@authorization
+def VolumeCollection(system, controller):
+    if not os.path.exists(
+        f"static/{model_name}/Systems/{system}/Storage/{controller}/VolumeCollection.json"
+    ):
+        return jsonify({"Error": "File not found"}), 404
+
+    return send_file(
+        f"static/{model_name}/Systems/{system}/Storage/{controller}/VolumeCollection.json"
+    )
+
+
 @app.route("/redfish/v1/Systems/<string:system>/Storage/Volumes/<string:volume>")
 @authorization
 def StorageVolume(system, volume):
