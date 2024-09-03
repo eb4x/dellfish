@@ -83,7 +83,6 @@ def ComputerSystem(system):
 @app.route("/redfish/v1/Systems/<string:system>/Storage")
 @authorization
 def StorageCollection(system):
-    print(f"static/{model_name}/Systems/{system}/StorageCollection.json")
     if not os.path.exists(
         f"static/{model_name}/Systems/{system}/StorageCollection.json"
     ):
